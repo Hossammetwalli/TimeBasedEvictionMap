@@ -30,17 +30,17 @@ concurrent hashmap so we do not re-traverse the structures every time to find el
           
  5) unit test cases have been created including:
  
-            1-	Test for General acceptance with duration of 10 seconds (10000 ms) and size set at 10 entries.
+       1-	Test for General acceptance with duration of 10 seconds (10000 ms) and size set at 10 entries.
                 The test can be implemented with different variable for time and entry. 
                 
-            2-	Test for waiting the element to be expired and then remove it when expiry time
+       2-	Test for waiting the element to be expired and then remove it when expiry time
                 has been reached.
                 
-            3-	Test remove element when expiry time had been exceeded.
+       3-	Test remove element when expiry time had been exceeded.
             
-            4-	Test remove multiple element inserted at the same time when expiry time been reached or exceeded.
+       4-	Test remove multiple element inserted at the same time when expiry time been reached or exceeded.
             
-            5-	Test to put and get several elements.
+       5-	Test to put and get several elements.
             
-            6-	Test remove element by the key.
+       6-	Test remove element by the key.
 
