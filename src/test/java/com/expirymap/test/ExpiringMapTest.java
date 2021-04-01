@@ -43,7 +43,7 @@ public class ExpiringMapTest {
 
 		assertThat(map.size(), is(numEntries));
 
-		Thread.sleep(expiryTimeMs + 10);
+		Thread.sleep(expiryTimeMs + 1000);
 
 		assertThat(map.size(), is(0));
 	}
