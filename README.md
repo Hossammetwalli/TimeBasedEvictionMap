@@ -6,12 +6,18 @@ Design and implement a data structure for time based eviction map.
 Structures Outline:
 
 1)	Usage of Concurrent Hash Map which stores the keys and values only for a specific amount of time, and then expires after that time. 
-    the hashmap will give us fast access to any item It should support two operations get and put in O(1) time..
+    It allows concurrent threads to read the value without locking while adding or updating the map. Likewise,
+    the hashmap will give us fast access to any item as it supports two operations get and put in O(1) time.
 
-2)	PriorityQueue to store data ordered by entry’s expiry time where the soonest expiring items move to the head of the queue.
+2)	PriorityBlockingQueue to store data ordered by entry’s expiry time where the soonest expiring items move 
+    to the head of the queue. And will block when removing from an empty queue.  
 
-This pattern is structured to satisfy special insertion or remove properties and back it up with
-concurrent hashmap so we do not re-traverse the structures every time to find elements.
+    PriorityBlockingQueue unlike a standard queue, giving the option to add elements by implementing Comparable method.
+    The aim is to implement comparison logic in a way in which the closest element to expire is always ordered first.
+    Then, when we remove an element from our queue, it will always be the one with the highest priority.
+
+    This pattern is structured to satisfy special insertion or remove properties and back it up with
+    concurrent hashmap so we do not re-traverse the structures every time to find elements.
 
 3)	Background thread that check If the expiry time of the most recent entry is in the future the thread waits for
     this expiry time to arrive. Once this time arrives the key will be removed.
